@@ -238,11 +238,14 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {pricingTiers.map((tier, index) => (
               <Card
-                key={index}
-                className={`relative ${
-                  tier.featured ? "border-primary border-2 shadow-strong scale-105" : "shadow-soft"
-                }`}
-              >
+  key={index}
+  className={`relative overflow-hidden ${
+    tier.featured
+      ? "border-primary border-2 shadow-strong scale-105"
+      : "shadow-soft"
+  }`}
+>
+                <div className="flex flex-col h-full">
                 {tier.featured && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-bold">
                     Most Popular
@@ -268,6 +271,7 @@ const Index = () => {
   </div>
 </CardHeader>
                 <CardContent>
+                   <CardContent className="px-6">
                   <ul className="space-y-3">
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
@@ -278,6 +282,7 @@ const Index = () => {
                   </ul>
                 </CardContent>
                 <CardFooter>
+                   <CardFooter className="mt-auto p-6">
                   <Button
                     className="w-full"
                     variant={tier.featured ? "default" : "outline"}
