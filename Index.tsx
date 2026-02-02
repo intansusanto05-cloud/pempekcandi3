@@ -11,7 +11,11 @@ import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/Logo.png";
 import kitchenImage from "@/assets/Logo.png";
 import kitchenimage from "@/assets/kitchenimage.jpg";
-
+import familyImg from "@/assets/family-package.jpg";
+import customImg from "@/assets/custom-package.jpg";
+import partyImg from "@/assets/party-package.jpg";
+import businessImg from "@/assets/business-package.jpg";
+import specialImg from "@/assets/special-package.jpg";
 const Index = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -44,6 +48,7 @@ const Index = () => {
   const pricingTiers = [
     {
       title: "Family Package",
+      image: familyImg,
       price: "Rp 30,000",
       description: "Perfect for the whole family’s satisfaction ",
       features: [
@@ -54,6 +59,7 @@ const Index = () => {
     },
 {
       title: "Custom Packages",
+      image: customImg,
       price: "Rp 150,000",
       description: "Ideal for events and celebrations",
       features: [
@@ -67,6 +73,7 @@ const Index = () => {
     },
     {
       title: "Party Package",
+      image: partyImg,
       price: "Rp 150,000",
       description: "Ideal for events and celebrations",
       features: [
@@ -80,6 +87,7 @@ const Index = () => {
     },
     {
       title: "Business Package",
+      image: businessImg,
       price: "Rp 500,000",
       description: "For reseller, restaurants and catering",
       features: [
@@ -92,7 +100,8 @@ const Index = () => {
       ],
     },
     {
-      title: "Custom Package",
+      title: "Special Package",
+      image: specialImg,
       price: "Rp 500,000",
       description: "For reseller, restaurants and catering",
       features: [
@@ -239,11 +248,25 @@ const Index = () => {
                     Most Popular
                   </div>
                 )}
-                <CardHeader>
-                  <CardTitle className="text-2xl">{tier.title}</CardTitle>
-                  <CardDescription className="text-base">{tier.description}</CardDescription>
-                  <p className="text-4xl font-bold text-primary mt-4">{tier.price}</p>
-                </CardHeader>
+               <CardHeader className="p-0 relative">
+  {tier.image && (
+    <img
+      src={tier.image}
+      alt={tier.title}
+      className="w-full h-44 object-cover rounded-t-xl"
+    />
+  )}
+
+  <div className="p-6">
+    <CardTitle className="text-2xl">{tier.title}</CardTitle>
+    <CardDescription className="text-base">
+      {tier.description}
+    </CardDescription>
+    <p className="text-4xl font-bold text-primary mt-4">
+      {tier.price}
+    </p>
+  </div>
+</CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {tier.features.map((feature, i) => (
